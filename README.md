@@ -5,13 +5,13 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
 
 > ***We are still learning, but for sure will try our best.***
 > @ [*Yingjun Guan*](https://ischool.illinois.edu/people/phd-students/yingjun-guan)
-> @ [*Lan Li*](google.com)
+> @ [*Lan Li*](https://www.linkedin.com/in/lan-li-42682214a/)
 
 
 ## Title: 
   Monte Carlo Simulation for Tic-tac-toe Game
   
-  ![Tic-tac-toe](https://previews.123rf.com/images/epic22/epic221110/epic22111000033/10985023-Tic-tac-toe-winning-Crosses-and-zeros-isolated-on-white-background-Stock-Vector.jpg)
+  ![Tic-tac-toe](https://lh3.googleusercontent.com/EgfiSB2bdf7kuRfNQbe8Jaj_bhfrlfeRt2nzphA6jcbCQdy5iEku2uZyK-5_VWtWUCxi=w300)
 
 ## Team Member(s):
   Yingjun Guan, Lan Li
