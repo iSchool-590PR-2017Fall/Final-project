@@ -16,7 +16,7 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
 ## Team Member(s):
   Yingjun Guan, Lan Li
 
-## Background:
+### Background:
 [Tic-tac-toe](https://en.wikipedia.org/wiki/Tic-tac-toe) is a world famous game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.
 
 [Monte Carlo Simulation](https://en.wikipedia.org/wiki/Monte_Carlo_method) is a broad class of computational algorithms that rely on repeated random sampling to obtain numerical results. 
