@@ -21,10 +21,10 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
 
 [Monte Carlo Simulation](https://en.wikipedia.org/wiki/Monte_Carlo_method) is a broad class of computational algorithms that rely on repeated random sampling to obtain numerical results. 
 
-*Our project* focus on apply the Monte Carlo Simulation method into training the machine to how to play tic-tac-toe _wisely_.
+*Our project* focuses on applying the Monte Carlo Simulation into training the machine to how to play tic-tac-toe _wisely_.
 
-## Scenario:
-One fool ( Monte Carlo) plays tic-tac-toe with the player(human being). Tic-tac-toe is 3*3 grid where the winning rule is to mark three    in one horizontal , vertical or diagonal row.
+## Hypothesis:
+As
 
 ## Purpose:
   After many random travsing simulations and backpropagation, we can come to best policy for every round movement.
