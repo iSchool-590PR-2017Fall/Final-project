@@ -37,18 +37,13 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
  
 ### Algorithm:
  - The whole program applies the idea of recursion. The following figure can also helps to clarify the algorithm.
- ![try2](https://never-stop-building-blog-production.s3.amazonaws.com/pictures/minimax/full-minimax-move-tree.png)
- 
- 
- 
- 
- 
  ![try1](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Tic-tac-toe-game-tree.svg/2000px-Tic-tac-toe-game-tree.svg.png)
- - nihao
-         
-         
-         
-         
+ 
+ 
+ 
+ 
+ 
+ 
 
 ### Hypothesis before running the simulation:
   As there is no policy or strategy for Monte Carlo, it will randomly choose all possible positions. Human have policy to win, in this way, it will fail for many times.
@@ -86,5 +81,6 @@ Python 3.6 (PythonCharm), PyQT for UI
   Algorithm:
 Backpropagation
 
-
+![try2](https://never-stop-building-blog-production.s3.amazonaws.com/pictures/minimax/full-minimax-move-tree.png)
+ 
 https://neverstopbuilding-dropblog.herokuapp.com/minimax
