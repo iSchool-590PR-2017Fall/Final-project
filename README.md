@@ -39,12 +39,12 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
  - The whole program applies the idea of recursion. The following figure can also helps to clarify the algorithm.
  ![try1](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Tic-tac-toe-game-tree.svg/2000px-Tic-tac-toe-game-tree.svg.png)
  
- 
- 
- 
- 
- 
-
+# The following section are deletable. Another reference section and folder layout can be updated.  
+ #
+ #
+ #
+ #
+#
 ### Hypothesis before running the simulation:
   As there is no policy or strategy for Monte Carlo, it will randomly choose all possible positions. Human have policy to win, in this way, it will fail for many times.
 
