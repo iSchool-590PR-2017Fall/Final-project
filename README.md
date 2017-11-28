@@ -57,4 +57,4 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
  - _Minimax algorithm_: https://neverstopbuilding-dropblog.herokuapp.com/minimax
  - _Monte Carlo Tree Search_: http://www.cameronius.com/research/mcts/about/index.html
  - _PYQT_: https://en.wikipedia.org/wiki/PyQt
- - 
+ - _interesting questions in Tic Tac Toe_: https://www.quora.com/topic/Tic-Tac-Toe
