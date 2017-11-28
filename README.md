@@ -34,13 +34,16 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
  - We are ambitious enough to generate a human-computer interactive GUI medium for playing the game. 
  - The player can choose to play on the offensive position or the defensive position.
  - The program can use the MCS to make the (best) decision.
+ - The program can also help dig in some interesting research on tic-tac-toe, including but not limited to:
+ -- what's the winning rate of the offensive position / defensive position?
+ -- What is the probability of the first player winning in Tic Tac Toe as well as the second one winning?
+ -- Is there a way to never lose at Tic-Tac-Toe?
+ -- etc.
  
 ### Algorithm:
  - The whole program applies the idea of recursion. The following figure can also helps to clarify the algorithm.
  ![Algorithm](http://i.imgur.com/L6uAKBD.png)
  
- 
-
 ## Sources:
  - Software: Python 3.6 (PythonCharm), 
  - PyQT for UI design,
@@ -51,3 +54,5 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
  - _Monte Carlo Method_: https://en.wikipedia.org/wiki/Monte_Carlo_method
  - _Minimax algorithm_: https://neverstopbuilding-dropblog.herokuapp.com/minimax
  - _Monte Carlo Tree Search_: http://www.cameronius.com/research/mcts/about/index.html
+ - _PYQT_: https://en.wikipedia.org/wiki/PyQt
+ - 
