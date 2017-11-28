@@ -16,12 +16,17 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
 ## Team Member(s):
   Yingjun Guan, Lan Li
 
-# Monte Carlo Simulation Scenario & Purpose:
-  #
-  Scenario:
-  One fool ( Monte Carlo) plays tic-tac-toe with the player(human being). Tic-tac-toe is 3*3 grid where the winning rule is to mark three    in one horizontal , vertical or diagonal row.
-  #
-  Purpose:
+## Background:
+[Tic-tac-toe](https://en.wikipedia.org/wiki/Tic-tac-toe) is a world famous game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.
+
+[Monte Carlo Simulation](https://en.wikipedia.org/wiki/Monte_Carlo_method) is a broad class of computational algorithms that rely on repeated random sampling to obtain numerical results. 
+
+*Our project* focus on apply the Monte Carlo Simulation method into training the machine to how to play tic-tac-toe _wisely_.
+
+## Scenario:
+One fool ( Monte Carlo) plays tic-tac-toe with the player(human being). Tic-tac-toe is 3*3 grid where the winning rule is to mark three    in one horizontal , vertical or diagonal row.
+
+## Purpose:
   After many random travsing simulations and backpropagation, we can come to best policy for every round movement.
          
 
