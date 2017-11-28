@@ -37,7 +37,7 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
  
 ### Algorithm:
  - The whole program applies the idea of recursion. The following figure can also helps to clarify the algorithm.
- [Algorithm](http://i.imgur.com/L6uAKBD.png)
+ ![Algorithm](http://i.imgur.com/L6uAKBD.png)
  
  
  ![try1](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Tic-tac-toe-game-tree.svg/2000px-Tic-tac-toe-game-tree.svg.png)
