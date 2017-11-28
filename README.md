@@ -28,7 +28,7 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
 + [ ] **Absolute randomness** - For any specific situation, the machine will try any blank spot, with an absolute randomness. In our case, the decision is on the basis of the simulation, which is on and only on the basis of randomness.
 + [ ] **random variable series** - Each step will be a different situation which will call a MCS for the decision, and the whole game is based on the collabraton of all MCS.
 + [ ] **No human experiences involved** - The program contains the idea of Exhaustive Attack method and the spirit of traversal, on the other hand, no human experience of the game is needed.
-+ [ ] **Back propagation** - Further algorithms helped to better abstract the decision from the simulation.
++ [ ] **Decision making** - Each possible solution is given appropriate weight for evaluation, and make the final decision; the process of decision making which based on the traversal on the next level(s) is called back propagation.
 
 ### Purpose:
  - We are ambitious enough to generate a human-computer interactive GUI medium for playing the game. 
