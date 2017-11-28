@@ -1,3 +1,14 @@
+2017Fall 590PR Final Project 
+==========
+
+A brief introduction on our project about **M**onte **C**arlo **S**imulation. 
+
+![dwyl-logo-wide](https://cloud.githubusercontent.com/assets/194400/8141150/f4b4c854-115a-11e5-8c13-dc96a5f1e928.png)
+
+> ***We are still learning, but for sure will try our best.***.
+> ~ [*Arthur Ashe*](http://en.wikipedia.org/wiki/Arthur_Ashe)
+
+
 # Title: 
   Monte Carlo Simulation for Tic-tac-toe Game
 ## Team Member(s):
