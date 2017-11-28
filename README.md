@@ -4,8 +4,10 @@
   Yingjun Guan, Lan Li
 
 # Monte Carlo Simulation Scenario & Purpose:
+  #
   Scenario:
   One fool ( Monte Carlo) plays tic-tac-toe with the player(human being). Tic-tac-toe is 3*3 grid where the winning rule is to mark three    in one horizontal , vertical or diagonal row.
+  #
   Purpose:
   After many random travsing simulations and backpropagation, we can come to best policy for every round movement.
          
