@@ -16,6 +16,7 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
 ## Team Member(s):
   Yingjun Guan, Lan Li
 
+## Project
 ### Background:
 [Tic-tac-toe](https://en.wikipedia.org/wiki/Tic-tac-toe) is a world famous game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.
 
@@ -23,11 +24,15 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
 
 *Our project* focuses on applying the Monte Carlo Simulation into training the machine to how to play tic-tac-toe _wisely_.
 
-## Hypothesis:
-As
+### Hypothesis:
++ [ ] **Absolute randomness** - For any specific situation, the machine will try any blank spot, with an absolute randomness. In our case, the decision is on the basis of the simulation, which is on and only on the basis of randomness.
++ [ ] **random variable series** - Each step will be a different situation which will call a MCS for the decision, and the whole game is based on the collabraton of all MCS.
++ [ ] **No human experiences involved** - The program contains the idea of Exhaustive Attack method and the spirit of traversal, on the other hand, no human experience of the game is needed.
++ [ ] **Back propagation** - Further algorithms helped to better abstract the decision from the simulation.
 
-## Purpose:
-  After many random travsing simulations and backpropagation, we can come to best policy for every round movement.
+### Purpose:
+ - We are ambitious enough to generate a human-computer interactive GUI medium for playing the game. The player can choose to play on the offensive position or the defensive position.
+ 
          
 
 ### Hypothesis before running the simulation:
