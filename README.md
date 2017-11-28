@@ -35,7 +35,7 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
  - The player can choose to play on the offensive position or the defensive position.
  - The program can use the MCS to make the (best) decision.
  - The program can also help dig in some interesting research on tic-tac-toe, including but not limited to:
- -- what's the winning rate of the offensive position / defensive position?
+  * what's the winning rate of the offensive position / defensive position?
  -- What is the probability of the first player winning in Tic Tac Toe as well as the second one winning?
  -- Is there a way to never lose at Tic-Tac-Toe?
  -- etc.
