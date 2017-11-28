@@ -3,15 +3,16 @@
 
 A brief introduction on our project about **M**onte **C**arlo **S**imulation. 
 
-![dwyl-logo-wide](https://cloud.githubusercontent.com/assets/194400/8141150/f4b4c854-115a-11e5-8c13-dc96a5f1e928.png)
-
 > ***We are still learning, but for sure will try our best.***
 > @ [*Yingjun Guan*](https://ischool.illinois.edu/people/phd-students/yingjun-guan)
 > @ [*Lan Li*](google.com)
 
 
-# Title: 
+## Title: 
   Monte Carlo Simulation for Tic-tac-toe Game
+  
+  ![Tic-tac-toe](https://previews.123rf.com/images/epic22/epic221110/epic22111000033/10985023-Tic-tac-toe-winning-Crosses-and-zeros-isolated-on-white-background-Stock-Vector.jpg)
+
 ## Team Member(s):
   Yingjun Guan, Lan Li
 
