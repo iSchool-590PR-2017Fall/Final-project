@@ -41,12 +41,13 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
  
  
 
-## Sources Used:
-  #
-  Software:
-Python 3.6 (PythonCharm), PyQT for UI
-  #
-  Algorithm:
-Backpropagation
-
-https://neverstopbuilding-dropblog.herokuapp.com/minimax
+## Sources:
+ - Software: Python 3.6 (PythonCharm), 
+ - PyQT for UI design,
+ - Algorithm: [Monte Carlo Tree Search](http://www.cameronius.com/research/mcts/about/index.html)
+ 
+## References:
+ - _Tic tac toe_: https://en.wikipedia.org/wiki/Tic-tac-toe
+ - _Monte Carlo Method_: https://en.wikipedia.org/wiki/Monte_Carlo_method
+ - _Minimax algorithm_: https://neverstopbuilding-dropblog.herokuapp.com/minimax
+ - _Monte Carlo Tree Search_: http://www.cameronius.com/research/mcts/about/index.html
