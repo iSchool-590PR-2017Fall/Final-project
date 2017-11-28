@@ -31,8 +31,17 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
 + [ ] **Back propagation** - Further algorithms helped to better abstract the decision from the simulation.
 
 ### Purpose:
- - We are ambitious enough to generate a human-computer interactive GUI medium for playing the game. The player can choose to play on the offensive position or the defensive position.
+ - We are ambitious enough to generate a human-computer interactive GUI medium for playing the game. 
+ - The player can choose to play on the offensive position or the defensive position.
+ - The program can use the MCS to make the (best) decision.
  
+### Algorithm:
+ - The whole program applies the idea of recursion. The following figure can also helps to clarify the algorithm.
+ ![try1](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Tic-tac-toe-game-tree.svg/2000px-Tic-tac-toe-game-tree.svg.png)
+ [try2](https://never-stop-building-blog-production.s3.amazonaws.com/pictures/minimax/full-minimax-move-tree.png)
+         
+         
+         
          
 
 ### Hypothesis before running the simulation:
@@ -70,3 +79,6 @@ Python 3.6 (PythonCharm), PyQT for UI
   #
   Algorithm:
 Backpropagation
+
+
+https://neverstopbuilding-dropblog.herokuapp.com/minimax
