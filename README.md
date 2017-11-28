@@ -5,8 +5,9 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
 
 ![dwyl-logo-wide](https://cloud.githubusercontent.com/assets/194400/8141150/f4b4c854-115a-11e5-8c13-dc96a5f1e928.png)
 
-> ***We are still learning, but for sure will try our best.***.
-> ~ [*Arthur Ashe*](http://en.wikipedia.org/wiki/Arthur_Ashe)
+> ***We are still learning, but for sure will try our best.***
+> @ [*Yingjun Guan*](https://ischool.illinois.edu/people/phd-students/yingjun-guan)
+> @ [*Lan Li*](google.com)
 
 
 # Title: 
