@@ -40,8 +40,6 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
  ![Algorithm](http://i.imgur.com/L6uAKBD.png)
  
  
- ![try1](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Tic-tac-toe-game-tree.svg/2000px-Tic-tac-toe-game-tree.svg.png)
- 
 
 ## Sources Used:
   #
@@ -51,6 +49,4 @@ Python 3.6 (PythonCharm), PyQT for UI
   Algorithm:
 Backpropagation
 
-![try2](https://never-stop-building-blog-production.s3.amazonaws.com/pictures/minimax/full-minimax-move-tree.png)
- 
 https://neverstopbuilding-dropblog.herokuapp.com/minimax
