@@ -39,39 +39,6 @@ A brief introduction on our project about **M**onte **C**arlo **S**imulation.
  - The whole program applies the idea of recursion. The following figure can also helps to clarify the algorithm.
  ![try1](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Tic-tac-toe-game-tree.svg/2000px-Tic-tac-toe-game-tree.svg.png)
  
-# The following section are deletable. Another reference section and folder layout can be updated.  
- #
- #
- #
- #
-#
-### Hypothesis before running the simulation:
-  As there is no policy or strategy for Monte Carlo, it will randomly choose all possible positions. Human have policy to win, in this way, it will fail for many times.
-
-### Simulation's variables of uncertainty
-  There is no tactics for every round. In this way, all of the blank positions are available to choose. For every MC(Monte Carlo) layer (round), we set multiple moving probabilities as random variables.Expand next move from all of the possible positions, using Monte Carlo to simulate all rounds. For each result(win or lose or fair),  we use backpropagation to score every MC layer steps. And after many times simulations, we can get best policy for this game.
-  #
-  Round 1, there are 9 random variables(available positions);
-  #
-  Round 2, there are 7 random variables(available positions);
-  #
-  Round 3( expect result round), there are 5 random variables(available positions);
-  #
-  Round 4( expect result round), there are 3 random variables(availbale positions);
-  #
-  Round 5( expect result round), there is 1 position.
-  #
-  This is the whole possible procedure for Tic-tac-toe game, where it's a good representation of reality.
-
-"""
-check here
-"""
-List and describe your simulation's variables of uncertainty (where you're using pseudo-random number generation). 
-For each such variable, how did you decide the range and which probability distribution to use?  
-Do you think it's a good representation of reality?
-
-## Instructions on how to use the program:
-  This is a human-computer interaction game. The player will play with computer.For each round, player will react and make a decision for next step. 
 
 ## Sources Used:
   #
