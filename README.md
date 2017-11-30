@@ -9,7 +9,9 @@ Hypothesis before running the simulation:
 HA: The BitVaRY model The BitVaRY® model provides at least an 80% accurate prediction of future bitcoin values based on historical bitcoin opening and closing values
 H0: The VaRY model is less than 80% accurate in its prediction of future bitcoin values based on historical bitcoin opening and closing values
 
-Simulation's variables of uncertainty
+Simulation's variables of uncertainty:
+Explanatory variables: Opening Price, Closing Price, Date
+Response variable: Predicted bitcoin value
 
 List and describe your simulation's variables of uncertainty (where you're using pseudo-random number generation). For each such variable, how did you decide the range and which probability distribution to use?
 Do you think it's a good representation of reality?
