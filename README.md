@@ -1,12 +1,15 @@
-Title: Using a Monte Carlo simulation to calculate the value at risk of investment in Bitcoins
+Title: Predicting the future value of Bitcoins using the BitVaRY method (an implementation of the GBM Method)
 
 Team Member(s): Rishabh Mulani, Vasu Choudhary, Yogeshwar Kansara
 
 (Note: Don't put your email addresses here (which is public). If a student wants their NAME hidden as well, due to optional FERPA regulations, they can be listed purely by their GitHub ID).
 
-Monte Carlo Simulation Scenario & Purpose: To calculate the value at risk of investment in Bitcoins
+Monte Carlo Simulation Scenario & Purpose: We are developing a model which attempts to predict future bitcoin values based on historical opening and closing values of bitcoins. The underlying calculation for this model is based on the GBM (Geometrical Brownian Motion) model which is used to predict values of stocks trading in the stock-market. We are using similar fundamental rules to come up with a model which predicts Bitcoin values. We will run a Monte-Carlo simulation by iterating through multiple historical data values and validate them against recent historical values. Then, we will compare how accurate our predictions were. Our goal is to reach a prediction level with 80% accuracy. Our model will compare predictions to actual values for a 30 day period.
+
 
 Hypothesis before running the simulation:
+HA: The BitVaRY model The BitVaRY® model provides at least an 80% accurate prediction of future bitcoin values based on historical bitcoin opening and closing values
+H0: The VaRY model is less than 80% accurate in its prediction of future bitcoin values based on historical bitcoin opening and closing values
 
 Simulation's variables of uncertainty
 
