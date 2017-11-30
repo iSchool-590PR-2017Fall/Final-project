@@ -18,7 +18,7 @@ Do you think it's a good representation of reality?
 
 Instructions on how to use the program:
 1. Download the "Btc_hist_data.csv" file
-2. Download and run the script "BitVaRY.py"
+2. Download and run the script "bitvary.py"
 
 Sources Used:
 
