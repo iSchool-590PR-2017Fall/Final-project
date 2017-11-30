@@ -1,6 +1,6 @@
 # Title: Predicting the future value of Bitcoins using the BitVaRY® method (an implementation of the GBM Method)
 
-## Team Member(s): Rishabh Mulani, Vasu Choudhary, Yogeshwar Kansara
+## Team Member(s): Rishabh Mulani, Vasu Chaudhary, Yogeshwar Kansara
 
 ## Monte Carlo Simulation Scenario & Purpose: 
 We are developing a model which attempts to predict future bitcoin values based on historical opening and closing values of bitcoins. The underlying calculation for this model is based on the GBM (Geometrical Brownian Motion) model which is used to predict values of stocks trading in the stock-market. We are using similar fundamental rules to come up with a model which predicts Bitcoin values. We will run a Monte-Carlo simulation by iterating through multiple historical data values and validate them against recent historical values. Then, we will compare how accurate our predictions were. Our goal is to reach a prediction level with 80% accuracy. Our model will compare predictions to actual values for a 30 day period.
