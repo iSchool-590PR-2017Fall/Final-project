@@ -7,8 +7,9 @@ We are developing a model which attempts to predict future bitcoin values based 
 
 
 ## Hypothesis before running the simulation:
-HA: The BitVaRY model The BitVaRY model provides at least an 80% accurate prediction of future bitcoin values based on historical bitcoin opening and closing values
-H0: The VaRY model is less than 80% accurate in its prediction of future bitcoin values based on historical bitcoin opening and closing values
+1. BITCOIN prices are greatly associated with historical BITCOIN prices
+2. BITCOIN prices will increase for a very long time before saturating/declining
+3. The BitVaRY model The BitVaRY model provides at least an 80% accurate prediction of future bitcoin values based on historical bitcoin opening and closing values
 
 ## Simulation's variables of uncertainty: List and describe your simulation's variables of uncertainty (where you're using pseudo-random number generation). For each such variable, how did you decide the range and which probability distribution to use?
 Explanatory variables: Opening Price, Closing Price, Date
@@ -18,8 +19,7 @@ The probability distribution is a normal distribution which is represented by a 
 This model would be a good representation of reality and a great tool for bitcoin miners and investors!
 
 ## Instructions on how to use the program:
-1. Download the "Btc_hist_data.csv" file
-2. Download and run the script "bitvary.py"
+1. Download and run the script BitVary_v2.py"!
 
 ## Sources Used:
 For historical data: https://www.kaggle.com/mczielinski/bitcoin-historical-data 
