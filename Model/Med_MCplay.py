@@ -181,10 +181,11 @@ class Med_Test(BoardWindow,QMainWindow):
                 if l2[i] != 0:
                     w2[i] = 0
 
-                if w2.index(max(w2))>0:
-                    move = w2.index(max(w2))
-                else:
-                    move = random.choices([0,1,2,3,4,5,6,7,8])
+            if w2.index(max(w2))>0:
+                move = w2.index(max(w2))
+            else:
+                move = random.choice([0,1,2,3,4,5,6,7,8])
+
             return move
 
     def MC_round(self,number=100):
@@ -192,9 +193,10 @@ class Med_Test(BoardWindow,QMainWindow):
         pc = self.chooseRandomMoveFromList(self.board)
         (w2, l2, d2) = self.MC_trail(self.board, pc,number, [0] * 9, [0] * 9, [0] * 9)
         move = self.auto_selection(w2, l2, d2)
+        while move not in pc:
+            move = self.auto_selection(w2, l2, d2)
 
         buttonIndex = move
-
         """
 
             player positions
