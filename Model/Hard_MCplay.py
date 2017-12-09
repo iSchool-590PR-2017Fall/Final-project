@@ -134,9 +134,9 @@ class Hard_Test(BoardWindow,QMainWindow):
             x+=1
             choice=random.choice(pc)
             board1=copy.copy(board)
-            if self.isWinner(self.selection(board1, choice)) is True:
+            if self.isXWin(self.selection(board1, choice)) is True:
                 w2[choice] += 1
-            elif self.isLost(self.selection(board1,choice)) is True:
+            elif self.isXLost(self.selection(board1,choice)) is True:
                 l2[choice] += 1
             elif self.isDraw(self.selection(board1,choice)) is True:
                 d2[choice] += 1
@@ -303,7 +303,7 @@ class Hard_Test(BoardWindow,QMainWindow):
 
         return False
 
-    def is0Lost(self,board):
+    def isXLost(self,board):
         if (
                     self.isWin(board) is True and
                     board.count('-') % 2 == 1

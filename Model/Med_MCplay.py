@@ -125,27 +125,23 @@ class Hard_Test(BoardWindow,QMainWindow):
 
     def MC_trail(self,board,pc,n=1,w2=[0]*9,l2=[0]*9,d2=[0]*9):
         # choice = self.chooseRandomMoveFromList()
-
         """
 
         player positions
         """
-
-
         x=0
         while x<=n:
             x+=1
             choice=random.choice(pc)
             board1=copy.copy(board)
-            if self.isWinner(self.selection(board1, choice)) is True:
+            if self.isXWin(self.selection(board1, choice)) is True:
                 w2[choice] += 1
-            elif self.isLost(self.selection(board1,choice)) is True:
+            elif self.isXLost(self.selection(board1,choice)) is True:
                 l2[choice] += 1
             elif self.isDraw(self.selection(board1,choice)) is True:
                 d2[choice] += 1
             elif self.notFinished(self.selection(board1,choice)) is True:
                 choice1 = self.chooseRandomMoveFromList(board1)
-                # (w2, l2, d2) = self.MC_trail(board1,choice1, 1, w2, l2, d2)
                 (w3, l3, d3) = self.MC_trail(board1,choice1, 1, w2, l2, d2)
                 if sum(w3) - sum(w2) != 0:
                     w2[choice] += 1
@@ -160,7 +156,7 @@ class Hard_Test(BoardWindow,QMainWindow):
         """
         This is a manually selection.
 
-        For the 
+        For the
         """
         if board[n] == '-':
             m = board.count('-')
@@ -180,6 +176,10 @@ class Hard_Test(BoardWindow,QMainWindow):
             """
             This program simply select the best move by count the most win occurrence.
             """
+            for i in range(9):
+                if l2[i] != 0:
+                    w2[i] = 0
+
             move = w2.index(max(w2))
             return move
 
@@ -271,7 +271,7 @@ class Hard_Test(BoardWindow,QMainWindow):
 
         return False
 
-    def isWinner(self,board):
+    def isXWin(self,board):
         """
             This is to define the status of "isWin" (for X).
 
@@ -303,7 +303,7 @@ class Hard_Test(BoardWindow,QMainWindow):
 
         return False
 
-    def isLost(self,board):
+    def isXLost(self,board):
         if (
                     self.isWin(board) is True and
                     board.count('-') % 2 == 1
