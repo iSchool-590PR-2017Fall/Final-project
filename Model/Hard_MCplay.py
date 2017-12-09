@@ -125,13 +125,10 @@ class Hard_Test(BoardWindow,QMainWindow):
 
     def MC_trail(self,board,pc,n=1,w2=[0]*9,l2=[0]*9,d2=[0]*9):
         # choice = self.chooseRandomMoveFromList()
-
         """
 
         player positions
         """
-
-
         x=0
         while x<=n:
             x+=1
@@ -145,7 +142,6 @@ class Hard_Test(BoardWindow,QMainWindow):
                 d2[choice] += 1
             elif self.notFinished(self.selection(board1,choice)) is True:
                 choice1 = self.chooseRandomMoveFromList(board1)
-                # (w2, l2, d2) = self.MC_trail(board1,choice1, 1, w2, l2, d2)
                 (w3, l3, d3) = self.MC_trail(board1,choice1, 1, w2, l2, d2)
                 if sum(w3) - sum(w2) != 0:
                     w2[choice] += 1
@@ -180,6 +176,10 @@ class Hard_Test(BoardWindow,QMainWindow):
             """
             This program simply select the best move by count the most win occurrence.
             """
+            for i in range(9):
+                if l2[i] != 0:
+                    w2[i] = 0
+
             move = w2.index(max(w2))
             return move
 
