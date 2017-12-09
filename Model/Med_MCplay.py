@@ -177,9 +177,9 @@ class Med_Test(BoardWindow,QMainWindow):
             """
             This program simply select the best move by count the most win occurrence.
             """
-            for i in range(9):
-                if l2[i] != 0:
-                    w2[i] = 0
+            # for i in range(9):
+            #     if l2[i] != 0:
+            #         w2[i] = 0
 
             if w2.index(max(w2))>0:
                 move = w2.index(max(w2))
