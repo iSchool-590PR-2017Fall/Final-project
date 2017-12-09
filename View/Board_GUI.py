@@ -1,5 +1,11 @@
+import random
+import sys
 from PyQt5 import QtCore
+from PyQt5.QtWidgets import QPushButton, QApplication, QVBoxLayout, QFormLayout, QMainWindow, QWidget, QMessageBox
+from PyQt5.QtCore import *
 from qtpy import QtWidgets
+
+# from Model.MonteCarlo_play import Game
 
 """
 interface : choose Mode
@@ -7,30 +13,114 @@ Easy Mode
 Hard Mode
 """
 
-class Ui_tictactoe(object):
-    def setupUi(self,tictactoe):
+
+class First(QMainWindow):
+    def __init__(self, parent=None):
+        super(First, self).__init__(parent)
+        """
+        cannot set a QLayout directly on QMainWindow
+        """
+        wid = QWidget(self)
+        self.setCentralWidget(wid)
+
+        self.b1 = QPushButton("battle")
+        self.b2 = QPushButton("challenge")
+        self.mainLayout = QVBoxLayout()
+        wid.setLayout(self.mainLayout)
+
+        self.mainLayout.addWidget(self.b1)
+        self.mainLayout.addWidget(self.b2)
+
+        """
+        QWidget::setLayout: Attempting to set QLayout "" on First "", which already has a layout
+        """
+        # self.setLayout(self.mainLayout)
+        self.setWindowTitle("Welcome!")
+
+        self.b1.clicked.connect(self.on_boardButton_clicked)
+        self.b2.clicked.connect(self.on_queryButton_clicked)
+
+    def on_boardButton_clicked(self):
+        msg = QMessageBox()
+        msg.setText("Please choose the game mode!")
+        msg.setWindowTitle("Enjoy the game with computer :)")
+        msg.addButton(QPushButton('Easy Mode'), QMessageBox.YesRole)
+        msg.addButton(QPushButton('Hard Mode'), QMessageBox.NoRole)
+        msg.exec_()
+        result = msg.buttonRole(msg.clickedButton())
+        if result == QMessageBox.YesRole:
+            print("this is easy")
+            self.Easy_Mode()
+        else:
+            print("this is hard")
+            self.Hard_Mode()
+
+    def Easy_Mode(self):
+        """
+               avoid dependency 
+               """
+        from Model.MonteCarlo_play import Game
+        self.dialog = Game()
+        self.dialog.show()
+
+    def Hard_Mode(self):
+        """
+
+        haven't finished
+        :return: 
+        """
+        from Model.Hard_MCplay import Hard_Test
+        self.dialog1 = Hard_Test()
+        self.dialog1.show()
+        print("hard!!!")
+
+    def on_queryButton_clicked(self):
+        msg = QMessageBox()
+        buttonReply = msg.question(self, 'challenge', "beat with Monte Carlo Simulation!",
+                                   QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+        if buttonReply == QMessageBox.Yes:
+            msg2 = QMessageBox()
+            msg2.setText("What is the probability of the first player winning"
+                         " in Tic Tac Toe as well as the second one winning")
+            msg2.setWindowTitle("Try your best")
+            msg2.addButton(QPushButton('50%'), QMessageBox.NoRole)
+            msg2.addButton(QPushButton('60%'), QMessageBox.YesRole)
+            msg2.addButton(QPushButton('30%'), QMessageBox.NoRole)
+            result = msg2.exec_()
+            if result == QMessageBox.YesRole:
+                print("you are right")
+            else:
+                print("this is weird")
+
+
+class BoardWindow(QMainWindow):
+    def __init__(self, parent=None):
+        super(BoardWindow, self).__init__(parent)
+        self.setupUi(self)
+
+    def setupUi(self, tictactoe):
         """ init tictactoe"""
         tictactoe.setObjectName("tictactoe")
 
-        tictactoe.resize(627,470)
-        sizePolicy=QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed,QtWidgets.QSizePolicy.Fixed)
+        tictactoe.resize(627, 470)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHeightForWidth(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(tictactoe.sizePolicy().hasHeightForWidth())
         tictactoe.setSizePolicy(sizePolicy)
 
-        tictactoe.setMinimumSize(QtCore.QSize(627,470))
-        tictactoe.setMaximumSize(QtCore.QSize(627,470))
+        tictactoe.setMinimumSize(QtCore.QSize(627, 470))
+        tictactoe.setMaximumSize(QtCore.QSize(627, 470))
         tictactoe.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
 
-        self.centralwidget=QtWidgets.QWidget(tictactoe)
+        self.centralwidget = QtWidgets.QWidget(tictactoe)
         self.centralwidget.setObjectName("centralwidget")
 
         """
         put the board on the frame, central widget
         """
-        self.frame=QtWidgets.QFrame(self.centralwidget)
-        self.frame.setGeometry(QtCore.QRect(10,0,601,411))
+        self.frame = QtWidgets.QFrame(self.centralwidget)
+        self.frame.setGeometry(QtCore.QRect(10, 0, 601, 411))
         self.frame.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.frame.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame.setLineWidth(0)
@@ -39,14 +129,14 @@ class Ui_tictactoe(object):
         """
         tictactoe layout
         """
-        self.gridLayout=QtWidgets.QGridLayout(self.frame)
+        self.gridLayout = QtWidgets.QGridLayout(self.frame)
         self.gridLayout.setObjectName("gridLayout")
 
         self.button1 = QtWidgets.QToolButton(self.frame)
         self.button1.setText("")
         self.button1.setIconSize(QtCore.QSize(128, 128))
         self.button1.setObjectName("button1")
-        self.gridLayout.addWidget(self.button1,0,0)
+        self.gridLayout.addWidget(self.button1, 0, 0)
 
         self.button2 = QtWidgets.QToolButton(self.frame)
         self.button2.setText("")
@@ -125,7 +215,6 @@ class Ui_tictactoe(object):
         self.menubar.addAction(self.menuNew.menuAction())
         self.toolBar.addAction(self.actionNew_Game)
 
-
         self.retranslateUi(tictactoe)
         """
         connect with slot
@@ -140,4 +229,14 @@ class Ui_tictactoe(object):
         self.actionNew_Game.setText(_translate("tictactoe", "New Game"))
         self.action_Exit.setText(_translate("tictactoe", "Exit"))
 
+
+def main():
+    app = QApplication(sys.argv)
+    main = First()
+    main.show()
+    sys.exit(app.exec_())
+
+
+if __name__ == '__main__':
+    main()
 

@@ -1,3 +1,4 @@
+import copy
 import os
 import random
 import sys
@@ -10,8 +11,8 @@ from Controller.Dialog import Dialog
 from View.Board_GUI import BoardWindow
 
 
-class Game(BoardWindow,QMainWindow):
-    def __init__(self, parent=None):
+class Hard_Test(BoardWindow,QMainWindow):
+    def __init__(self, parent=None,n=1):
         super().__init__(parent)
         self.setupUi(self)
 
@@ -94,7 +95,6 @@ class Game(BoardWindow,QMainWindow):
 
         buttonName = str(button.objectName())
         buttonIndex = int(buttonName[-1]) - 1
-        print(buttonIndex)
 
         """
         transfer index into board list position
@@ -123,12 +123,77 @@ class Game(BoardWindow,QMainWindow):
         # computer trail
         self.MC_round()
 
-    def MC_round(self):
-        buttonIndex = self.chooseRandomMoveFromList()
+    def MC_trail(self,board,pc,n=1,w2=[0]*9,l2=[0]*9,d2=[0]*9):
+        # choice = self.chooseRandomMoveFromList()
 
         """
 
         player positions
+        """
+
+
+        x=0
+        while x<=n:
+            x+=1
+            choice=random.choice(pc)
+            board1=copy.copy(board)
+            if self.isWinner(self.selection(board1, choice)) is True:
+                w2[choice] += 1
+            elif self.isLost(self.selection(board1,choice)) is True:
+                l2[choice] += 1
+            elif self.isDraw(self.selection(board1,choice)) is True:
+                d2[choice] += 1
+            elif self.notFinished(self.selection(board1,choice)) is True:
+                choice1 = self.chooseRandomMoveFromList(board1)
+                # (w2, l2, d2) = self.MC_trail(board1,choice1, 1, w2, l2, d2)
+                (w3, l3, d3) = self.MC_trail(board1,choice1, 1, w2, l2, d2)
+                if sum(w3) - sum(w2) != 0:
+                    w2[choice] += 1
+                if sum(l3) - sum(l2) != 0:
+                    l2[choice] += 1
+                if sum(d3) - sum(d2) != 0:
+                    d2[choice] += 1
+
+        return(w2,l2,d2)
+
+    def selection(self, board,n):
+        """
+        This is a manually selection.
+
+        For the 
+        """
+        if board[n] == '-':
+            m = board.count('-')
+            if m % 2 == 0:
+                board[n] = '0'
+            else:
+                board[n] = 'X'
+                #     else:
+                #         print("The position has already been occupied")
+        return board
+
+    def auto_selection(self,w2,l2,d2) -> int:
+
+            # this is a 2nd method for auto-selection.
+            # The problem is that that max wining occurrence is not enough to win.
+            # the example is in the next cell
+            """
+            This program simply select the best move by count the most win occurrence.
+            """
+            move = w2.index(max(w2))
+            return move
+
+    def MC_round(self,number=100):
+
+        pc = self.chooseRandomMoveFromList(self.board)
+        (w2, l2, d2) = self.MC_trail(self.board, pc,number, [0] * 9, [0] * 9, [0] * 9)
+        move = self.auto_selection(w2, l2, d2)
+
+        buttonIndex = move
+
+        """
+
+            player positions
         """
         self.board[buttonIndex] = '0'
 
@@ -158,19 +223,10 @@ class Game(BoardWindow,QMainWindow):
 
         self.frame.setEnabled(True)
 
-    # def isSpaceFree(self, board, move):
-    #     return board[move] == ' '
-
-    def chooseRandomMoveFromList(self):
-        possibleMoves = []
-        for i in range(len(self.board)):
-            if self.board[i] == '-':
-                possibleMoves.append(i)
-
-        if len(possibleMoves) != 0:
-            return random.choice(possibleMoves)
-        else:
-            return None
+    def chooseRandomMoveFromList(self,board):
+        pc = [i for i, j in enumerate(board) if j == '-']
+        #     print(pc)
+        return pc
 
     def isWin(self, board):
         """
@@ -215,6 +271,63 @@ class Game(BoardWindow,QMainWindow):
 
         return False
 
+    def isWinner(self,board):
+        """
+            This is to define the status of "isWin" (for X).
+
+            >>> bb=['X', 'X', 'X', '-', 'X', 'O', '-', 'O', 'O']
+            >>> print(isWin(bb))
+            True
+            """
+        if (
+                        self.isWin(board) is True and
+                        board.count('-') % 2 == 0
+        ):
+            return True
+
+        return False
+
+    def isDraw(self,board):
+        """
+        This is to define the status of "isDraw".
+
+        >>> bb=['X', 'X', 'O', 'O', 'X', 'X', 'X','O', 'O']
+        >>> print(isDraw(bb))
+        True
+        """
+        if (
+                        self.isWin(board) is False and
+                        board.count('-') == 0
+        ):
+            return True
+
+        return False
+
+    def isLost(self,board):
+        if (
+                    self.isWin(board) is True and
+                    board.count('-') % 2 == 1
+        ):
+            return True
+
+        return False
+
+    def notFinished(self,board):
+        """
+            This is to define the status of "notFinish".
+
+            >>> b=['X', 'X', 'O', 'X', '-', '-', '-', '-', 'O']
+            >>> print(notFinish(b))
+            False
+            """
+        if (
+                        self.isWin(board) is False and
+                        board.count('-') != 0
+        ):
+            return True
+
+        return False
+
     def check_win(self, player):
         if self.isWin(self.board):
             if player is 'X':
@@ -228,8 +341,11 @@ class Game(BoardWindow,QMainWindow):
         return 2
 
 
-if __name__ == '__main__':
+def main():
     app = QApplication(sys.argv)
-    game = Game()
+    game = Hard_Test()
     game.show()
     app.exec_()
+
+if __name__ == '__main__':
+    main()
