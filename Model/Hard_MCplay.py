@@ -150,7 +150,7 @@ class Hard_Test(BoardWindow,QMainWindow):
                 if sum(d3) - sum(d2) != 0:
                     d2[choice] += 1
 
-        return(w2,l2,d2)
+        return w2, l2, d2
 
     def selection(self, board,n):
         """
@@ -353,6 +353,7 @@ def main():
     game = Hard_Test()
     game.show()
     app.exec_()
+
 
 if __name__ == '__main__':
     main()
