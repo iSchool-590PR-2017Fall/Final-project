@@ -11,7 +11,7 @@ from Controller.Dialog import Dialog
 from View.Board_GUI import BoardWindow
 
 
-class Hard_Test(BoardWindow,QMainWindow):
+class Med_Test(BoardWindow,QMainWindow):
     def __init__(self, parent=None,n=1):
         super().__init__(parent)
         self.setupUi(self)
@@ -140,15 +140,16 @@ class Hard_Test(BoardWindow,QMainWindow):
             #     l2[choice] += 1
             elif self.isDraw(self.selection(board1,choice)) is True:
                 d2[choice] += 1
-            elif self.notFinished(self.selection(board1,choice)) is True:
-                choice1 = self.chooseRandomMoveFromList(board1)
-                (w3, l3, d3) = self.MC_trail(board1,choice1, 1, w2, l2, d2)
-                if sum(w3) - sum(w2) != 0:
-                    l2[choice] += 1
-                # if sum(l3) - sum(l2) != 0:
-                #     l2[choice] += 1
-                if sum(d3) - sum(d2) != 0:
-                    d2[choice] += 1
+            # elif self.notFinished(self.selection(board1,choice)) is True:
+            #     choice1 = self.chooseRandomMoveFromList(board1)
+            #     board2 = copy.copy(board1)
+            #     (w3, l3, d3) = self.MC_trail(board2,choice1, 1, w2, l2, d2)
+            #     if sum(w3) - sum(w2) != 0:
+            #         l2[choice] += 1
+            #     # if sum(l3) - sum(l2) != 0:
+            #     #     l2[choice] += 1
+            #     if sum(d3) - sum(d2) != 0:
+            #         d2[choice] += 1
 
         return(w2,l2,d2)
 
@@ -180,7 +181,10 @@ class Hard_Test(BoardWindow,QMainWindow):
                 if l2[i] != 0:
                     w2[i] = 0
 
-            move = w2.index(max(w2))
+                if w2.index(max(w2))>0:
+                    move = w2.index(max(w2))
+                else:
+                    move = random.choices([0,1,2,3,4,5,6,7,8])
             return move
 
     def MC_round(self,number=100):
@@ -343,7 +347,7 @@ class Hard_Test(BoardWindow,QMainWindow):
 
 def main():
     app = QApplication(sys.argv)
-    game = Hard_Test()
+    game = Med_Test()
     game.show()
     app.exec_()
 
