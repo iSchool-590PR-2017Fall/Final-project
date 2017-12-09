@@ -11,7 +11,7 @@ from Controller.Dialog import Dialog
 from View.Board_GUI import BoardWindow
 
 
-class Hard_Test(BoardWindow,QMainWindow):
+class Easy_Test(BoardWindow,QMainWindow):
     def __init__(self, parent=None,n=1):
         super().__init__(parent)
         self.setupUi(self)
@@ -125,42 +125,39 @@ class Hard_Test(BoardWindow,QMainWindow):
 
     def MC_trail(self,board,pc,n=1,w2=[0]*9,l2=[0]*9,d2=[0]*9):
         # choice = self.chooseRandomMoveFromList()
-
         """
 
         player positions
         """
+        # x=0
+        # while x<=n:
+        #     x+=1
+            # choice=random.choice(pc)
+            # board1=copy.copy(board)
+            # if self.isWin(self.selection(board1, choice)) is True:
+                # w2[choice] += 1
+            # elif self.isXLost(self.selection(board1,choice)) is True:
+            #     l2[choice] += 1
+            # elif self.isDraw(self.selection(board1,choice)) is True:
+            #     d2[choice] += 1
+            # elif self.notFinished(self.selection(board1,choice)) is True:
+            #     choice1 = self.chooseRandomMoveFromList(board1)
+            #     board2 = copy.copy(board1)
+            #     (w3, l3, d3) = self.MC_trail(board2,choice1, 1, w2, l2, d2)
+            #     if sum(w3) - sum(w2) != 0:
+            #         l2[choice] += 1
+            #     # if sum(l3) - sum(l2) != 0:
+            #     #     l2[choice] += 1
+            #     if sum(d3) - sum(d2) != 0:
+            #         d2[choice] += 1
 
-
-        x=0
-        while x<=n:
-            x+=1
-            choice=random.choice(pc)
-            board1=copy.copy(board)
-            if self.isWinner(self.selection(board1, choice)) is True:
-                w2[choice] += 1
-            elif self.isLost(self.selection(board1,choice)) is True:
-                l2[choice] += 1
-            elif self.isDraw(self.selection(board1,choice)) is True:
-                d2[choice] += 1
-            elif self.notFinished(self.selection(board1,choice)) is True:
-                choice1 = self.chooseRandomMoveFromList(board1)
-                # (w2, l2, d2) = self.MC_trail(board1,choice1, 1, w2, l2, d2)
-                (w3, l3, d3) = self.MC_trail(board1,choice1, 1, w2, l2, d2)
-                if sum(w3) - sum(w2) != 0:
-                    w2[choice] += 1
-                if sum(l3) - sum(l2) != 0:
-                    l2[choice] += 1
-                if sum(d3) - sum(d2) != 0:
-                    d2[choice] += 1
-
-        return(w2,l2,d2)
+        return w2, l2, d2
 
     def selection(self, board,n):
         """
         This is a manually selection.
 
-        For the 
+        For the
         """
         if board[n] == '-':
             m = board.count('-')
@@ -172,7 +169,7 @@ class Hard_Test(BoardWindow,QMainWindow):
                 #         print("The position has already been occupied")
         return board
 
-    def auto_selection(self,w2,l2,d2) -> int:
+    def auto_selection(self,w2=[0]*9,l2=[0]*9,d2=[0]*9) -> int:
 
             # this is a 2nd method for auto-selection.
             # The problem is that that max wining occurrence is not enough to win.
@@ -180,17 +177,27 @@ class Hard_Test(BoardWindow,QMainWindow):
             """
             This program simply select the best move by count the most win occurrence.
             """
-            move = w2.index(max(w2))
+            # for i in range(9):
+            #     if l2[i] != 0:
+            #         w2[i] = 0
+
+            # if w2.index(max(w2))>0:
+            #     move = w2.index(max(w2))
+            # else:
+            #     move = random.choice([0,1,2,3,4,5,6,7,8])
+            move = random.choice([0, 1, 2, 3, 4, 5, 6, 7, 8])
+
             return move
 
     def MC_round(self,number=100):
 
         pc = self.chooseRandomMoveFromList(self.board)
-        (w2, l2, d2) = self.MC_trail(self.board, pc,number, [0] * 9, [0] * 9, [0] * 9)
-        move = self.auto_selection(w2, l2, d2)
+        # (w2, l2, d2) = self.MC_trail(self.board, pc,number, [0] * 9, [0] * 9, [0] * 9)
+        move = self.auto_selection()
+        while move not in pc:
+            move = self.auto_selection()
 
         buttonIndex = move
-
         """
 
             player positions
@@ -343,7 +350,7 @@ class Hard_Test(BoardWindow,QMainWindow):
 
 def main():
     app = QApplication(sys.argv)
-    game = Hard_Test()
+    game = Easy_Test()
     game.show()
     app.exec_()
 
