@@ -134,19 +134,19 @@ class Hard_Test(BoardWindow,QMainWindow):
             x+=1
             choice=random.choice(pc)
             board1=copy.copy(board)
-            if (self.isWin(self.selection(board1, choice)) is True):
+            if self.isWin(self.selection(board1, choice)) is True:
                 w2[choice] += 1
-            elif self.isLost(self.selection(board1,choice)) is True:
-                l2[choice] += 1
+            # elif self.isXLost(self.selection(board1,choice)) is True:
+            #     l2[choice] += 1
             elif self.isDraw(self.selection(board1,choice)) is True:
                 d2[choice] += 1
             elif self.notFinished(self.selection(board1,choice)) is True:
                 choice1 = self.chooseRandomMoveFromList(board1)
                 (w3, l3, d3) = self.MC_trail(board1,choice1, 1, w2, l2, d2)
                 if sum(w3) - sum(w2) != 0:
-                    w2[choice] += 1
-                if sum(l3) - sum(l2) != 0:
                     l2[choice] += 1
+                # if sum(l3) - sum(l2) != 0:
+                #     l2[choice] += 1
                 if sum(d3) - sum(d2) != 0:
                     d2[choice] += 1
 
@@ -156,7 +156,7 @@ class Hard_Test(BoardWindow,QMainWindow):
         """
         This is a manually selection.
 
-        For the 
+        For the
         """
         if board[n] == '-':
             m = board.count('-')
@@ -271,12 +271,12 @@ class Hard_Test(BoardWindow,QMainWindow):
 
         return False
 
-    def isXWin(self,board):
+    def isWinner(self,board):
         """
             This is to define the status of "isWin" (for X).
 
             >>> bb=['X', 'X', 'X', '-', 'X', 'O', '-', 'O', 'O']
-            >>> print(isXWin(bb))
+            >>> print(isWin(bb))
             True
             """
         if (
@@ -303,7 +303,7 @@ class Hard_Test(BoardWindow,QMainWindow):
 
         return False
 
-    def isXLost(self,board):
+    def isLost(self,board):
         if (
                     self.isWin(board) is True and
                     board.count('-') % 2 == 1

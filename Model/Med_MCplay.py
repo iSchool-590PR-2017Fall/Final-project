@@ -271,7 +271,7 @@ class Hard_Test(BoardWindow,QMainWindow):
 
         return False
 
-    def isXWin(self,board):
+    def isWinner(self,board):
         """
             This is to define the status of "isWin" (for X).
 
@@ -303,7 +303,7 @@ class Hard_Test(BoardWindow,QMainWindow):
 
         return False
 
-    def isXLost(self,board):
+    def isLost(self,board):
         if (
                     self.isWin(board) is True and
                     board.count('-') % 2 == 1
