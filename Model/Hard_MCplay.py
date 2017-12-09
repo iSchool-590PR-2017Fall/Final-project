@@ -134,9 +134,9 @@ class Hard_Test(BoardWindow,QMainWindow):
             x+=1
             choice=random.choice(pc)
             board1=copy.copy(board)
-            if self.isXWin(self.selection(board1, choice)) is True:
+            if (self.isWin(self.selection(board1, choice)) is True):
                 w2[choice] += 1
-            elif self.isXLost(self.selection(board1,choice)) is True:
+            elif self.isLost(self.selection(board1,choice)) is True:
                 l2[choice] += 1
             elif self.isDraw(self.selection(board1,choice)) is True:
                 d2[choice] += 1
@@ -276,7 +276,7 @@ class Hard_Test(BoardWindow,QMainWindow):
             This is to define the status of "isWin" (for X).
 
             >>> bb=['X', 'X', 'X', '-', 'X', 'O', '-', 'O', 'O']
-            >>> print(isWin(bb))
+            >>> print(isXWin(bb))
             True
             """
         if (
