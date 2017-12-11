@@ -342,20 +342,31 @@ class resultWindow(QMainWindow):
         self.centralWidget.setObjectName("centralWidget")
 
         self.lb1 = QLabel(self.centralWidget)
-        self.lb1.setGeometry(QtCore.QRect(50, 50, 150, 50))
+        self.lb1.setGeometry(QtCore.QRect(30, 50, 150, 50))
         self.lb1.setAlignment(QtCore.Qt.AlignCenter)
         self.lb1.setObjectName("winningrate1")
 
         self.lb2 = QLabel(self.centralWidget)
-        self.lb2.setGeometry(QtCore.QRect(200, 50, 150, 50))
+        self.lb2.setGeometry(QtCore.QRect(180, 50, 150, 50))
         self.lb2.setAlignment(QtCore.Qt.AlignCenter)
         self.lb2.setObjectName("winningrate2")
 
         self.lb3 = QLabel(self.centralWidget)
-        self.lb3.setGeometry(QtCore.QRect(350, 50, 150, 50))
+        self.lb3.setGeometry(QtCore.QRect(330, 50, 150, 50))
         self.lb3.setAlignment(QtCore.Qt.AlignCenter)
         self.lb3.setObjectName("drawingrate")
 
+        self.res1=QLineEdit(self.centralWidget)
+        self.res1.setGeometry(50,120,100,20)
+        self.res1.setObjectName("res1")
+
+        self.res2=QLineEdit(self.centralWidget)
+        self.res2.setGeometry(200,120,100,20)
+        self.res2.setObjectName("res2")
+
+        self.res3=QLineEdit(self.centralWidget)
+        self.res3.setGeometry(350,120,100,20)
+        self.res3.setObjectName("res3")
 
         self.btnretry = QtWidgets.QToolButton(self.centralWidget)
         self.btnretry.setText("Retry")
@@ -363,8 +374,6 @@ class resultWindow(QMainWindow):
         self.btnretry.setObjectName("Retry")
         self.btnretry.clicked.connect(self.on_Retry_clicked)
         self.btnretry.setGeometry(QtCore.QRect(350, 300, 115, 32))
-
-
 
         resWindow.setCentralWidget(self.centralWidget)
 
