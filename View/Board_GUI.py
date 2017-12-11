@@ -2,7 +2,7 @@ import random
 import sys
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QPushButton, QApplication, QVBoxLayout, QFormLayout, QMainWindow, QWidget, QMessageBox, \
-    QLabel, QComboBox, QLineEdit
+    QLabel, QComboBox, QLineEdit, QBoxLayout, QGridLayout
 from PyQt5.QtCore import *
 from qtpy import QtWidgets
 
@@ -250,17 +250,30 @@ class BoardWindow(QMainWindow):
 class chalWindow(QMainWindow):
     def __init__(self, parent=None):
         super(chalWindow, self).__init__(parent)
-        self.setupUi()
+        self.setupUi(self)
 
-    def setupUi(self):
+    def setupUi(self,chalWindow):
         """ set the layout for challenge"""
+        chalWindow.setObjectName("chalwindow")
+        chalWindow.resize(500,450)
+        self.centralWidget=QWidget(chalWindow)
+        self.centralWidget.setObjectName("centralWidget")
 
-        self.lbl1=QLabel("first player",self)
-        self.lbl2=QLabel("second player",self)
-        self.lbl3=QLabel("round number",self)
+        self.lbl1=QLabel(self.centralWidget)
+        self.lbl1.setGeometry(QtCore.QRect(50,50,100,50))
+        self.lbl1.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl1.setObjectName("first player")
+        self.lbl2=QLabel(self.centralWidget)
+        self.lbl2.setGeometry(QtCore.QRect(200,50,100,50))
+        self.lbl2.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl2.setObjectName("second player")
+        self.lbl3 = QLabel(self.centralWidget)
+        self.lbl3.setGeometry(QtCore.QRect(350, 50, 100, 50))
+        self.lbl3.setAlignment(QtCore.Qt.AlignCenter)
+        self.lbl3.setObjectName("round number")
 
 
-        self.combo1=QComboBox(self)
+        self.combo1=QComboBox(self.centralWidget)
         """
         have parameter combo1 for first player mode
         """
@@ -268,9 +281,9 @@ class chalWindow(QMainWindow):
         self.combo1.addItem("Hard")
         self.combo1.addItem("Med")
         self.combo1.addItem("Easy")
-        self.combo1.move(50,100)
+        self.combo1.setGeometry(QtCore.QRect(50,100,100,50))
 
-        self.combo2=QComboBox(self)
+        self.combo2=QComboBox(self.centralWidget)
         """
         have parameter combo2 for second player  mode 
         """
@@ -278,29 +291,26 @@ class chalWindow(QMainWindow):
         self.combo2.addItem("Hard")
         self.combo2.addItem("Med")
         self.combo2.addItem("Easy")
-        self.combo2.move(200,100)
+        self.combo2.setGeometry(QtCore.QRect(200, 100, 100, 50))
 
         # input the parameter for Monte  Carlo rounds
         # self.number=input()
-        self.n_rounds=QLineEdit(self)
-        self.n_rounds.move(350,100)
+        self.n_rounds=QLineEdit(self.centralWidget)
+        # self.n_rounds.move(350,100)
         self.n_rounds.setObjectName("number")
+        self.n_rounds.setGeometry(350,120,100,20)
 
-        self.lbl1.move(50,50)
-        self.lbl2.move(200,50)
-        self.lbl3.move(350,50)
-
-        self.btnrun = QtWidgets.QToolButton(self)
+        self.btnrun = QtWidgets.QToolButton(self.centralWidget)
         self.btnrun.setText("Run")
-        self.btnrun.setIconSize(QtCore.QSize(128, 128))
         self.btnrun.setObjectName("Sure")
         self.btnrun.clicked.connect(self.on_Run_clicked)
-        self.btnrun.move(350,300)
+        self.btnrun.setGeometry(QtCore.QRect(350, 300, 115, 32))
 
-        # combo1.activated[str].connect(self.onActivated)
-        self.setGeometry(500, 200, 500, 450)
-        self.setWindowTitle('Monte Carlo')
-        self.show()
+        chalWindow.setCentralWidget(self.centralWidget)
+
+        self.retranslateUi(chalWindow)
+        QtCore.QMetaObject.connectSlotsByName(chalWindow)
+
 
     def on_Run_clicked(self):
         if self.n_rounds != '':
@@ -311,37 +321,66 @@ class chalWindow(QMainWindow):
             msg.setText("please input the number of rounds!")
             msg.show()
 
+    def retranslateUi(self,chalWindow):
+        _translate=QtCore.QCoreApplication.translate
+        chalWindow.setWindowTitle(_translate("chalWindow","Monte Carlo"))
+        self.lbl1.setText(_translate("chalWindow","first player"))
+        self.lbl2.setText(_translate("chalWindow", "second player"))
+        self.lbl3.setText(_translate("chalWindow", "round number"))
+        self.btnrun.setText(_translate("chalWindow", "Run"))
+
 
 class resultWindow(QMainWindow):
     def __init__(self, parent=None):
         super(resultWindow, self).__init__(parent)
-        self.setupUi()
+        self.setupUi(self)
 
-    def setupUi(self):
-        self.lb1 = QLabel("winning rate(1)", self)
-        self.lb2 = QLabel("winning rate(2)", self)
-        self.lb3 = QLabel("drawing rate", self)
+    def setupUi(self,resWindow):
+        resWindow.setObjectName("resultwindow")
+        resWindow.resize(500, 450)
+        self.centralWidget = QWidget(resWindow)
+        self.centralWidget.setObjectName("centralWidget")
 
-        self.lb1.setGeometry(QtCore.QRect(30, 50, 100, 100))
-        self.lb2.setGeometry(QtCore.QRect(200, 50, 100, 100))
-        self.lb3.setGeometry(QtCore.QRect(370, 50, 100, 100))
-        # self.lb1.move(30, 50)
-        # self.lb2.move(100, 50)
-        # self.lb3.move(400, 50)
+        self.lb1 = QLabel(self.centralWidget)
+        self.lb1.setGeometry(QtCore.QRect(50, 50, 150, 50))
+        self.lb1.setAlignment(QtCore.Qt.AlignCenter)
+        self.lb1.setObjectName("winningrate1")
 
-        btnretry = QtWidgets.QToolButton(self)
-        btnretry.setText("Retry")
-        btnretry.setIconSize(QtCore.QSize(128, 128))
-        btnretry.setObjectName("Retry")
-        btnretry.clicked.connect(self.on_Retry_clicked)
-        btnretry.move(350,300)
+        self.lb2 = QLabel(self.centralWidget)
+        self.lb2.setGeometry(QtCore.QRect(200, 50, 150, 50))
+        self.lb2.setAlignment(QtCore.Qt.AlignCenter)
+        self.lb2.setObjectName("winningrate2")
 
-        self.setGeometry(500,200,500, 450)
-        self.setWindowTitle('Monte Carlo')
-        self.show()
+        self.lb3 = QLabel(self.centralWidget)
+        self.lb3.setGeometry(QtCore.QRect(350, 50, 150, 50))
+        self.lb3.setAlignment(QtCore.Qt.AlignCenter)
+        self.lb3.setObjectName("drawingrate")
+
+
+        self.btnretry = QtWidgets.QToolButton(self.centralWidget)
+        self.btnretry.setText("Retry")
+        self.btnretry.setIconSize(QtCore.QSize(128, 128))
+        self.btnretry.setObjectName("Retry")
+        self.btnretry.clicked.connect(self.on_Retry_clicked)
+        self.btnretry.setGeometry(QtCore.QRect(350, 300, 115, 32))
+
+
+
+        resWindow.setCentralWidget(self.centralWidget)
+
+        self.retranslateUi(resWindow)
+        QtCore.QMetaObject.connectSlotsByName(resWindow)
 
     def on_Retry_clicked(self):
         print("this way")
+
+    def retranslateUi(self, resWindow):
+        _translate = QtCore.QCoreApplication.translate
+        resWindow.setWindowTitle(_translate("resWindow", "Monte Carlo result"))
+        self.lb1.setText(_translate("resWindow", "winning rate for 1st"))
+        self.lb2.setText(_translate("resWindow", "winning rate for 2nd"))
+        self.lb3.setText(_translate("resWindow", "drawning rate"))
+        self.btnretry.setText(_translate("resWindow", "Retry"))
 
         # def onActivated(self,text):
     #     print("haha")
