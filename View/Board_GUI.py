@@ -1,7 +1,8 @@
 import random
 import sys
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QPushButton, QApplication, QVBoxLayout, QFormLayout, QMainWindow, QWidget, QMessageBox
+from PyQt5.QtWidgets import QPushButton, QApplication, QVBoxLayout, QFormLayout, QMainWindow, QWidget, QMessageBox, \
+    QLabel, QComboBox, QLineEdit
 from PyQt5.QtCore import *
 from qtpy import QtWidgets
 
@@ -24,9 +25,15 @@ class First(QMainWindow):
         self.setCentralWidget(wid)
 
         self.b1 = QPushButton("battle")
+        self.b1.setFixedSize(400,200)
+        self.b1.move(160,200)
         self.b2 = QPushButton("challenge")
+        self.b2.setFixedSize(400,200)
+        self.b2.move(160,420)
+
         self.mainLayout = QVBoxLayout()
         wid.setLayout(self.mainLayout)
+        self.setGeometry(500,200,420,450)
 
         self.mainLayout.addWidget(self.b1)
         self.mainLayout.addWidget(self.b2)
@@ -44,19 +51,19 @@ class First(QMainWindow):
         msg = QMessageBox()
         msg.setText("Please choose the game mode!")
         msg.setWindowTitle("Enjoy the game with computer :)")
-        msg.addButton(QPushButton('Easy Mode'), QMessageBox.YesRole)
-        msg.addButton(QPushButton('Hard Mode'), QMessageBox.NoRole)
-        msg.addButton(QPushButton('Med Mode'),QMessageBox.AcceptRole)
+        msg.addButton(QPushButton('Easy Mode'), QMessageBox.AcceptRole)
+        msg.addButton(QPushButton('Hard Mode'), QMessageBox.YesRole)
+        msg.addButton(QPushButton('Med Mode'),QMessageBox.NoRole)
         msg.exec_()
         result = msg.buttonRole(msg.clickedButton())
         if result == QMessageBox.YesRole:
             print("this is easy")
-            self.Easy_Mode()
+            self.Hard_Mode()
         elif result == QMessageBox.NoRole:
             print("this is hard")
-            self.Hard_Mode()
-        else:
             self.Med_Mode()
+        else:
+            self.Easy_Mode()
 
     def Easy_Mode(self):
         """
@@ -243,205 +250,101 @@ class BoardWindow(QMainWindow):
 class chalWindow(QMainWindow):
     def __init__(self, parent=None):
         super(chalWindow, self).__init__(parent)
-        self.setupUi(self)
+        self.setupUi()
 
-    def setupUi(self, challenge):
-        """ init challenge"""
-        challenge.setObjectName("challenge")
+    def setupUi(self):
+        """ set the layout for challenge"""
 
-        challenge.resize(627, 470)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHeightForWidth(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(challenge.sizePolicy().hasHeightForWidth())
-        challenge.setSizePolicy(sizePolicy)
+        self.lbl1=QLabel("first player",self)
+        self.lbl2=QLabel("second player",self)
+        self.lbl3=QLabel("round number",self)
 
-        challenge.setMinimumSize(QtCore.QSize(627, 470))
-        challenge.setMaximumSize(QtCore.QSize(627, 470))
-        challenge.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
 
-        self.centralwidget = QtWidgets.QWidget(challenge)
-        self.centralwidget.setObjectName("centralwidget")
-
+        self.combo1=QComboBox(self)
         """
-        put the board on the frame, central widget
+        have parameter combo1 for first player mode
         """
-        self.frame = QtWidgets.QFrame(self.centralwidget)
-        self.frame.setGeometry(QtCore.QRect(10, 0, 601, 411))
-        self.frame.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Plain)
-        self.frame.setLineWidth(0)
-        self.frame.setObjectName("frame")
+        self.combo1.setObjectName("combo1")
+        self.combo1.addItem("Hard")
+        self.combo1.addItem("Med")
+        self.combo1.addItem("Easy")
+        self.combo1.move(50,100)
 
+        self.combo2=QComboBox(self)
         """
-        challenge layout
+        have parameter combo2 for second player  mode 
         """
-        self.gridLayout = QtWidgets.QGridLayout(self.frame)
-        self.gridLayout.setObjectName("gridLayout")
+        self.combo2.setObjectName("combo2")
+        self.combo2.addItem("Hard")
+        self.combo2.addItem("Med")
+        self.combo2.addItem("Easy")
+        self.combo2.move(200,100)
 
-        self.button1 = QtWidgets.QToolButton(self.frame)
-        self.button1.setText("computer1")
-        self.button1.setIconSize(QtCore.QSize(192, 40))
-        self.button1.setObjectName("computer1")
-        self.gridLayout.addWidget(self.button1, 0, 0)
+        # input the parameter for Monte  Carlo rounds
+        # self.number=input()
+        self.n_rounds=QLineEdit(self)
+        self.n_rounds.move(350,100)
+        self.n_rounds.setObjectName("number")
 
-        self.button2 = QtWidgets.QToolButton(self.frame)
-        self.button2.setText("computer2")
-        self.button2.setIconSize(QtCore.QSize(192, 40))
-        self.button2.setObjectName("computer2")
-        self.gridLayout.addWidget(self.button2, 0, 1)
+        self.lbl1.move(50,50)
+        self.lbl2.move(200,50)
+        self.lbl3.move(350,50)
 
-        self.button3 = QtWidgets.QToolButton(self.frame)
-        self.button3.setText("Hard")
-        self.button3.setIconSize(QtCore.QSize(192, 40))
-        self.button3.setObjectName("Hard")
-        self.gridLayout.addWidget(self.button3, 1, 0)
+        self.btnrun = QtWidgets.QToolButton(self)
+        self.btnrun.setText("Run")
+        self.btnrun.setIconSize(QtCore.QSize(128, 128))
+        self.btnrun.setObjectName("Sure")
+        self.btnrun.clicked.connect(self.on_Run_clicked)
+        self.btnrun.move(350,300)
 
-        self.button4 = QtWidgets.QToolButton(self.frame)
-        self.button4.setText("Hard")
-        self.button4.setIconSize(QtCore.QSize(192, 40))
-        self.button4.setObjectName("Hard")
-        self.gridLayout.addWidget(self.button4, 1, 1)
+        # combo1.activated[str].connect(self.onActivated)
+        self.setGeometry(500, 200, 500, 450)
+        self.setWindowTitle('Monte Carlo')
+        self.show()
 
-        self.button5 = QtWidgets.QToolButton(self.frame)
-        self.button5.setText("Hard")
-        self.button5.setIconSize(QtCore.QSize(192, 40))
-        self.button5.setObjectName("Hard")
-        self.gridLayout.addWidget(self.button5, 2, 0)
+    def on_Run_clicked(self):
+        if self.n_rounds != '':
+            self.dialog0=resultWindow()
+            self.dialog0.show()
+        else:
+            msg=QMessageBox()
+            msg.setText("please input the number of rounds!")
+            msg.show()
 
-        self.button6 = QtWidgets.QToolButton(self.frame)
-        self.button6.setText("Med")
-        self.button6.setIconSize(QtCore.QSize(192, 40))
-        self.button6.setObjectName("Med")
-        self.gridLayout.addWidget(self.button6, 2, 1)
 
-        self.button7 = QtWidgets.QToolButton(self.frame)
-        self.button7.setText("Hard")
-        self.button7.setIconSize(QtCore.QSize(192, 40))
-        self.button7.setObjectName("Hard")
-        self.gridLayout.addWidget(self.button7, 3, 0)
+class resultWindow(QMainWindow):
+    def __init__(self, parent=None):
+        super(resultWindow, self).__init__(parent)
+        self.setupUi()
 
-        self.button8 = QtWidgets.QToolButton(self.frame)
-        self.button8.setText("Easy")
-        self.button8.setIconSize(QtCore.QSize(192, 40))
-        self.button8.setObjectName("Easy")
-        self.gridLayout.addWidget(self.button8, 3, 1)
+    def setupUi(self):
+        self.lb1 = QLabel("winning rate(1)", self)
+        self.lb2 = QLabel("winning rate(2)", self)
+        self.lb3 = QLabel("drawing rate", self)
 
-        self.button9 = QtWidgets.QToolButton(self.frame)
-        self.button9.setText("Med")
-        self.button9.setIconSize(QtCore.QSize(192, 40))
-        self.button9.setObjectName("Med")
-        self.gridLayout.addWidget(self.button9, 4, 0)
+        self.lb1.setGeometry(QtCore.QRect(30, 50, 100, 100))
+        self.lb2.setGeometry(QtCore.QRect(200, 50, 100, 100))
+        self.lb3.setGeometry(QtCore.QRect(370, 50, 100, 100))
+        # self.lb1.move(30, 50)
+        # self.lb2.move(100, 50)
+        # self.lb3.move(400, 50)
 
-        self.button10 = QtWidgets.QToolButton(self.frame)
-        self.button10.setText("Hard")
-        self.button10.setIconSize(QtCore.QSize(192, 40))
-        self.button10.setObjectName("Hard")
-        self.gridLayout.addWidget(self.button10, 4, 1)
+        btnretry = QtWidgets.QToolButton(self)
+        btnretry.setText("Retry")
+        btnretry.setIconSize(QtCore.QSize(128, 128))
+        btnretry.setObjectName("Retry")
+        btnretry.clicked.connect(self.on_Retry_clicked)
+        btnretry.move(350,300)
 
-        self.button11 = QtWidgets.QToolButton(self.frame)
-        self.button11.setText("Med")
-        self.button11.setIconSize(QtCore.QSize(192, 40))
-        self.button11.setObjectName("Med")
-        self.gridLayout.addWidget(self.button11, 5, 0)
+        self.setGeometry(500,200,500, 450)
+        self.setWindowTitle('Monte Carlo')
+        self.show()
 
-        self.button12 = QtWidgets.QToolButton(self.frame)
-        self.button12.setText("Med")
-        self.button12.setIconSize(QtCore.QSize(192, 40))
-        self.button12.setObjectName("Med")
-        self.gridLayout.addWidget(self.button12, 5, 1)
+    def on_Retry_clicked(self):
+        print("this way")
 
-        self.button13 = QtWidgets.QToolButton(self.frame)
-        self.button13.setText("Med")
-        self.button13.setIconSize(QtCore.QSize(192, 40))
-        self.button13.setObjectName("Med")
-        self.gridLayout.addWidget(self.button13, 6, 0)
-
-        self.button14 = QtWidgets.QToolButton(self.frame)
-        self.button14.setText("Easy")
-        self.button14.setIconSize(QtCore.QSize(192, 40))
-        self.button14.setObjectName("Easy")
-        self.gridLayout.addWidget(self.button14, 6, 1)
-
-        self.button15 = QtWidgets.QToolButton(self.frame)
-        self.button15.setText("Easy")
-        self.button15.setIconSize(QtCore.QSize(192, 40))
-        self.button15.setObjectName("Easy")
-        self.gridLayout.addWidget(self.button15, 7, 0)
-
-        self.button16 = QtWidgets.QToolButton(self.frame)
-        self.button16.setText("Hard")
-        self.button16.setIconSize(QtCore.QSize(192, 40))
-        self.button16.setObjectName("Hard")
-        self.gridLayout.addWidget(self.button16, 7, 1)
-
-        self.button17 = QtWidgets.QToolButton(self.frame)
-        self.button17.setText("Easy")
-        self.button17.setIconSize(QtCore.QSize(192, 40))
-        self.button17.setObjectName("Easy")
-        self.gridLayout.addWidget(self.button17, 8, 0)
-
-        self.button18 = QtWidgets.QToolButton(self.frame)
-        self.button18.setText("Med")
-        self.button18.setIconSize(QtCore.QSize(192, 40))
-        self.button18.setObjectName("Med")
-        self.gridLayout.addWidget(self.button18, 8, 1)
-
-        self.button19 = QtWidgets.QToolButton(self.frame)
-        self.button19.setText("Easy")
-        self.button19.setIconSize(QtCore.QSize(192, 40))
-        self.button19.setObjectName("Easy")
-        self.gridLayout.addWidget(self.button19, 9, 0)
-
-        self.button20 = QtWidgets.QToolButton(self.frame)
-        self.button20.setText("Hard")
-        self.button20.setIconSize(QtCore.QSize(192, 40))
-        self.button20.setObjectName("Hard")
-        self.gridLayout.addWidget(self.button20, 9, 1)
-        challenge.setCentralWidget(self.centralwidget)
-
-        self.menubar = QtWidgets.QMenuBar(challenge)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 627, 22))
-        self.menubar.setObjectName("menubar")
-        self.menuNew = QtWidgets.QMenu(self.menubar)
-        self.menuNew.setObjectName("menuNew")
-        challenge.setMenuBar(self.menubar)
-
-        QtCore.QMetaObject.connectSlotsByName(challenge)
-        self.statusbar = QtWidgets.QStatusBar(challenge)
-        self.statusbar.setObjectName("statusbar")
-        self.statusbar.showMessage("Please choose the mode for each player")
-        challenge.setStatusBar(self.statusbar)
-        self.toolBar = QtWidgets.QToolBar(challenge)
-        self.toolBar.setObjectName("toolBar")
-        challenge.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
-
-        self.actionNew_Game = QtWidgets.QAction(challenge)
-        self.actionNew_Game.setObjectName("actionNew_Game")
-
-        self.action_Exit = QtWidgets.QAction(challenge)
-        self.action_Exit.setObjectName("action_Exit")
-
-        self.menuNew.addAction(self.actionNew_Game)
-        self.menuNew.addSeparator()
-        self.menuNew.addAction(self.action_Exit)
-        self.menuNew.addSeparator()
-        self.menubar.addAction(self.menuNew.menuAction())
-        self.toolBar.addAction(self.actionNew_Game)
-
-        self.retranslateUi(challenge)
-        """
-        connect with slot
-        """
-        QtCore.QMetaObject.connectSlotsByName(challenge)
-
-    def retranslateUi(self, challenge):
-        _translate = QtCore.QCoreApplication.translate
-        challenge.setWindowTitle(_translate("challenge", "Tic Tac Toe"))
-        self.menuNew.setTitle(_translate("challenge", "New"))
-        self.toolBar.setWindowTitle(_translate("challenge", "toolBar"))
-        self.actionNew_Game.setText(_translate("challenge", "New Game"))
-        self.action_Exit.setText(_translate("challenge", "Exit"))
+        # def onActivated(self,text):
+    #     print("haha")
 
 
 def main():
