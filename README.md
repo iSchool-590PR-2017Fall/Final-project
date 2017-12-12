@@ -1,27 +1,27 @@
-Create a FORK of this repository to store your code, data, and documentation for the final project. Detailed instructions for this assignment are in the course Moodle site.  The reason I'm asking you to fork this empty repository instead of creating a stand-alone repository is that it will be much easier for me and all students in the course to find all of our projects for code review and for grading. You can even get code review from students in the other section of IS590PR this way.
+# Title: Predicting the future value of Bitcoins using the BitVaRY® method (an implementation of the GBM Method)
 
-Even though your fork of this repository shall remain public, you'll still need to explicitly add any students on your team as Collaborators in the Settings. That way you can grant them write privileges.
+## Team Member(s): Rishabh Mulani, Vasu Chaudhary, Yogeshwar Kansara
 
-DELETE the lines from TEMPLATE up.
+## Monte Carlo Simulation Scenario & Purpose: 
+We are developing a model which attempts to predict future bitcoin values based on historical opening and closing values of bitcoins. The underlying calculation for this model is based on the GBM (Geometrical Brownian Motion) model which is used to predict values of stocks trading in the stock-market. We are using similar fundamental rules to come up with a model which predicts Bitcoin values. We will run a Monte-Carlo simulation by iterating through multiple historical data values and validate them against recent historical values. Then, we will compare how accurate our predictions were. Our goal is to reach a prediction level with 80% accuracy. Our model will compare predictions to actual values for a 30 day period.
 
-TEMPLATE for your report:
 
-# Title: 
+## Hypothesis before running the simulation:
+1. BITCOIN prices are greatly associated with historical BITCOIN prices
+2. BITCOIN prices will increase for a very long time before saturating/declining
+3. The BitVaRY model The BitVaRY model provides at least an 80% accurate prediction of future bitcoin values based on historical bitcoin opening and closing values
 
-## Team Member(s):
-(Note: Don't put your email addresses here (which is public).  If a student wants their NAME hidden as well, due to optional FERPA regulations, they can be listed purely by their GitHub ID).
-
-# Monte Carlo Simulation Scenario & Purpose:
-
-### Hypothesis before running the simulation:
-
-### Simulation's variables of uncertainty
-List and describe your simulation's variables of uncertainty (where you're using pseudo-random number generation). 
-For each such variable, how did you decide the range and which probability distribution to use?  
-Do you think it's a good representation of reality?
+## Simulation's variables of uncertainty: List and describe your simulation's variables of uncertainty (where you're using pseudo-random number generation). For each such variable, how did you decide the range and which probability distribution to use?
+Explanatory variables: Opening Price, Closing Price, Date
+Response variable: Predicted bitcoin value
+For the opening and closing prices, the range is defined by the historical lowest and highest values that the bitcoin held. These values are updated in real-time and the range for both these variables keeps changing as each day passes.
+The probability distribution is a normal distribution which is represented by a log function of the price fluctuation over time.
+This model would be a good representation of reality and a great tool for bitcoin miners and investors!
 
 ## Instructions on how to use the program:
-
+1. Download and run the script BitVary_v2.py"!
 
 ## Sources Used:
-
+For historical data: https://www.kaggle.com/mczielinski/bitcoin-historical-data 
+For problem idea and description & learning about Geometric Brownian Motion: https://www.investopedia.com/articles/07/montecarlo.asp 
+Quora.com for articles on predicting stocks & bitcoin values: https://www.quora.com/What-are-some-predictions-for-the-price-of-Bitcoin-or-Litecoin-by-2019
