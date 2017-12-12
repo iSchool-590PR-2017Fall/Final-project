@@ -123,11 +123,12 @@ class Med_Test(BoardWindow,QMainWindow):
         # computer trail
         self.MC_round()
 
-    def MC_trail(self,board,pc,n=1,w2=[0]*9,l2=[0]*9,d2=[0]*9):
+    def MC_trail(self, board: object, pc: object, n: object = 1, w2: object = [0] * 9, l2: object = [0] * 9, d2: object = [0] * 9) -> object:
         # choice = self.chooseRandomMoveFromList()
         """
 
         player positions
+        :type board: object
         """
         x=0
         while x<=n:

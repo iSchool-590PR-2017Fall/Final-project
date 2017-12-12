@@ -1,9 +1,10 @@
 import random
 from Model.Med_MCplay import Med_Test
+from Model.Hard_MCplay import Hard_Test
 
 
 class partb():
-    def __init__(self, lvla='easy', lvlb='hard', times='10000'):
+    def __init__(self, lvla='medium', lvlb='medium', times='100'):
         self.lvla = lvla
         self.lvlb = lvlb
         self.times = int(times)
@@ -20,7 +21,7 @@ class partb():
         m = board.count('-')
         while m > 0:
             if m % 2 == 1:
-                #                 print(self.lvla)
+                # print(self.lvla) ##
                 if self.lvla == 'easy':
                     self.easy(board)
                     m = board.count('-')
@@ -32,7 +33,7 @@ class partb():
                     m = board.count('-')
 
             if (m % 2 == 0) & (m != 0):
-                #                 print(self.lvlb)
+                # print(self.lvlb) ##
                 if self.lvlb == 'easy':
                     self.easy(board)
                     m = board.count('-')
@@ -43,12 +44,14 @@ class partb():
                     self.hard(board)
                     m = board.count('-')
 
-                    #         print(board)
-        if Med_Test.isWinner(self, board) == 1:
+                            # print(board)
+        if self.isWinner(board) == 1:
             state = 'w';
-        elif Med_Test.isDraw(self, board) == 1:
+        elif self.isDraw(board) == 1:
             state = 'd';
-        elif Med_Test.isLost(self, board) == 1:
+        # elif Med_Test.isDraw(self, board) == 1:
+        #     state = 'd';
+        elif self.isLost(board) == 1:
             state = 'l';
         # print(state)
         return state
@@ -74,25 +77,38 @@ class partb():
         #         board = self.selection(board, move)
         #         board.pop(0)
         #         m = board.count('-')
-        #         print(board)
+        # print(board)##
         return board
 
     def medium(self, board):
         pc = [i for i, j in enumerate(board) if j == '-']
-        move = random.choice(pc)
+        (w2, l2, d2) = Med_Test.MC_trail(self, self.board, pc,1000, [0] * 9, [0] * 9, [0] * 9)
+        # print(w2,l2,d2)
+        move = Med_Test.auto_selection(self, w2, l2, d2)
+        while move not in pc:
+            move = Med_Test.auto_selection(self, w2, l2, d2)
+        # move = random.choice(pc)
         self.selection(board, move)
         #         board.pop(0)
         #         m = board.count('-')
-        #         print(board)
+        # print(board)##
         return board
 
     def hard(self, board):
         pc = [i for i, j in enumerate(board) if j == '-']
-        move = random.choice(pc)
+
+        # pc = self.chooseRandomMoveFromList(self.board)
+        (w2, l2, d2) = Hard_Test.MC_trail(self, self.board, pc, 1000, [0] * 9, [0] * 9, [0] * 9)
+        move = Hard_Test.auto_selection(self, w2, l2, d2)
+
+        while move not in pc:
+            move = Hard_Test.auto_selection(self, w2, l2, d2)
+
+        # move = random.choice(pc)
         self.selection(board, move)
         #         board.pop(0)
         #         m = board.count('-')
-        #         print(board)
+        # print(board)##
         return board
 
 
@@ -139,62 +155,62 @@ class partb():
 
         return False
     #
-    # def isWinner(self, board):
-    #     """
-    #         This is to define the status of "isWin" (for X).
-    #
-    #         >>> bb=['X', 'X', 'X', '-', 'X', 'O', '-', 'O', 'O']
-    #         >>> print(isWin(bb))
-    #         True
-    #         """
-    #     if (
-    #                     self.isWin(board) is True and
-    #                         board.count('-') % 2 == 0
-    #     ):
-    #         return True
-    #
-    #     return False
+    def isWinner(self, board):
+        """
+            This is to define the status of "isWin" (for X).
 
-    # def isDraw(self, board):
-    #     """
-    #     This is to define the status of "isDraw".
-    #
-    #     >>> bb=['X', 'X', 'O', 'O', 'X', 'X', 'X','O', 'O']
-    #     >>> print(isDraw(bb))
-    #     True
-    #     """
-    #     if (
-    #                     self.isWin(board) is False and
-    #                     board.count('-') == 0
-    #     ):
-    #         return True
-    #
-    #     return False
+            >>> bb=['X', 'X', 'X', '-', 'X', 'O', '-', 'O', 'O']
+            >>> print(isWin(bb))
+            True
+            """
+        if (
+                        self.isWin(board) is True and
+                            board.count('-') % 2 == 0
+        ):
+            return True
 
-    # def isLost(self, board):
-    #     if (
-    #                     self.isWin(board) is True and
-    #                         board.count('-') % 2 == 1
-    #     ):
-    #         return True
-    #
-    #     return False
+        return False
 
-    # def notFinished(self, board):
-    #     """
-    #         This is to define the status of "notFinish".
-    #
-    #         >>> b=['X', 'X', 'O', 'X', '-', '-', '-', '-', 'O']
-    #         >>> print(notFinish(b))
-    #         False
-    #         """
-    #     if (
-    #                     self.isWin(board) is False and
-    #                     board.count('-') != 0
-    #     ):
-    #         return True
-    #
-    #     return False
+    def isDraw(self, board):
+        """
+        This is to define the status of "isDraw".
+
+        >>> bb=['X', 'X', 'O', 'O', 'X', 'X', 'X','O', 'O']
+        >>> print(isDraw(bb))
+        True
+        """
+        if (
+                        self.isWin(board) is False and
+                        board.count('-') == 0
+        ):
+            return True
+
+        return False
+
+    def isLost(self, board):
+        if (
+                        self.isWin(board) is True and
+                            board.count('-') % 2 == 1
+        ):
+            return True
+
+        return False
+
+    def notFinished(self, board):
+        """
+            This is to define the status of "notFinish".
+
+            >>> b=['X', 'X', 'O', 'X', '-', '-', '-', '-', 'O']
+            >>> print(notFinish(b))
+            False
+            """
+        if (
+                        self.isWin(board) is False and
+                        board.count('-') != 0
+        ):
+            return True
+
+        return False
 
     def MC_games(self):
         #         times=self.times
@@ -214,6 +230,7 @@ class partb():
 
 def main():
     a1 = partb()
+    # a1.single_game(a1.board)##
     a1.MC_games()
 
 if __name__ == '__main__':
