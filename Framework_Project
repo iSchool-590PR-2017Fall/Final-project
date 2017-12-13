@@ -1,11 +1,12 @@
 """
 Git-hub structure
 """
-In the View python file, there is the whole project interface: Board_GUI.py file;
-In the Model python file, MonteCarlo_play.py is the successful rules for tictactoe game; Easy_MCpaly.py , Hard_MCplay.py and Med_MCplay.py are three modes implementation; 
-PartB.py is the Monte Carlo Simulation procedure file.
-In the Controller python file, the Dialog.py is to give a mention of the game results.
-In the icon file, it’s the button pictures for board.
+a).In the View python file, there is the whole project interface: Board_GUI.py file;
+b).In the Model python file, MonteCarlo_play.py is the successful rules for tictactoe game;
+   Easy_MCpaly.py , Hard_MCplay.py and Med_MCplay.py are three modes implementation;
+   PartB.py is the Monte Carlo Simulation procedure file.
+c).In the Controller python file, the Dialog.py is to give a mention of the game results.
+d).In the icon file, it’s the button pictures for board.
 
 """
 Framework for the whole project
@@ -13,9 +14,17 @@ Framework for the whole project
 This whole project is divided into two parts: 
 1. human-computer interactive part
 2. computer-computer Monte Carlo Simulation
-For both parts, we are using MVC framework to distinguish GUI and algorithm parts. 
-For the GUI part, we use PyQt5 as the front GUI design; and connect the signals with background slots. 
-We use Monte Carlo Simulation to complete three Game Modes: Easy, Medium and Hard.
-For Easy mode, the player(computer) will absolutely choose the random vacant position to put the chess; 
-For Medium mode, it’s an almost-random decision procedure except when there is a chance to win, the player(computer) will choose to do this .
-For Hard mode, there is an extra visual-selection, which means the computer will traverse all possible situations and score every possible step, finally choose the position of highest score. 
+   For both parts, we are using MVC framework to distinguish GUI and algorithm parts.
+   For the GUI part, we use PyQt5 as the front GUI design; and connect the signals with background slots.
+1).In the first part:
+   We use Monte Carlo Simulation to complete three Game Modes: Easy, Medium and Hard.
+   For Easy mode, the player(computer) will absolutely choose the random vacant position to put the chess;
+   For Medium mode, it’s an almost-random decision procedure except when there is a chance to win,
+   the player(computer) will choose to do this .
+   For Hard mode, there is an extra visual-selection, which means the computer will traverse all possible
+situations and score every possible step, finally choose the position of highest score.
+2).In the second part:
+   As the human player can not play the game for too many times , we set computer as two players and simulate
+   6 situations: Easy to Easy; Easy to Medium; Easy to Hard; Medium to Medium, Medium to Hard; Hard to Hard;
+   under these situations, we can use Monte Carlo to simulate for thousands of times , and get the winning rate
+   for the first player, the winning rate for second player and the drawing rate.
