@@ -1,6 +1,7 @@
 import copy
 import random
 from Model.Med_MCplay import Med_Test
+from Model.Hard_MCplay import Hard_Test
 
 
 class partb():
