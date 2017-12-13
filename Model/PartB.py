@@ -2,6 +2,7 @@ import copy
 import random
 from Model.Med_MCplay import Med_Test
 from Model.Hard_MCplay import Hard_Test
+from Model.Easy_MCplay import Easy_Test
 
 
 class partb():
