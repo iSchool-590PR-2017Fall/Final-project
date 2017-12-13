@@ -1,3 +1,4 @@
+import copy
 import random
 from Model.Med_MCplay import Med_Test
 
@@ -13,7 +14,8 @@ class partb():
         board
         """
         self.board = list('---------')
-
+        from Model.Hard_MCplay import Hard_Test
+        self.Hard_Test = Hard_Test()
     #         print(self.lvla,self.lvlb)
     #         print(self.board)
 
@@ -95,21 +97,84 @@ class partb():
         # print(board)##
         return board
 
-    def hard(self, board):
-        pc = [i for i, j in enumerate(board) if j == '-']
+    def MC_trail(self,board,pc,n=1,w2=[0]*9,l2=[0]*9,d2=[0]*9):
+        # choice = self.chooseRandomMoveFromList()
+        """
 
-        # pc = self.chooseRandomMoveFromList(self.board)
+        player positions
         """
-        here is the bug
+        x=0
+        while x<=n:
+            x+=1
+            choice=random.choice(pc)
+            board1=copy.copy(board)
+            if self.isWin(self.selection(board1, choice)) is True:
+                w2[choice] += 1
+            # elif self.isXLost(self.selection(board1,choice)) is True:
+            #     l2[choice] += 1
+            elif self.isDraw(self.selection(board1,choice)) is True:
+                d2[choice] += 1
+            elif self.notFinished(self.selection(board1,choice)) is True:
+                # choice1 = [i for i, j in enumerate(board1) if j == '-']
+                choice1 = self.chooseRandomMoveFromList(board1)
+                (w3, l3, d3) = self.MC_trail(board1,choice1, 1, w2, l2, d2)
+                if sum(w3) - sum(w2) != 0:
+                    l2[choice] += 1
+                # if sum(l3) - sum(l2) != 0:
+                #     l2[choice] += 1
+                if sum(d3) - sum(d2) != 0:
+                    d2[choice] += 1
+
+        return w2, l2, d2
+
+    def selection(self, board,n):
         """
-        from Model.Hard_MCplay import Hard_Test
-        self.Hard_Test=Hard_Test()
-        (w2, l2, d2) = self.Hard_Test.MC_trail(self.board, pc, 1000, [0] * 9, [0] * 9, [0] * 9)
-        move =self.Hard_Test.auto_selection(w2, l2, d2)
+        This is a manually selection.
+
+        For the
+        """
+        if board[n] == '-':
+            m = board.count('-')
+            if m % 2 == 0:
+                board[n] = '0'
+            else:
+                board[n] = 'X'
+                #     else:
+                #         print("The position has already been occupied")
+        return board
+
+    def auto_selection(self,w2,l2,d2) -> int:
+
+            # this is a 2nd method for auto-selection.
+            # The problem is that that max wining occurrence is not enough to win.
+            # the example is in the next cell
+            """
+            This program simply select the best move by count the most win occurrence.
+            """
+            for i in range(9):
+                if l2[i] != 0:
+                    w2[i] = 0
+
+            if w2.index(max(w2))>0:
+                move = w2.index(max(w2))
+            else:
+                move = random.choice([0,1,2,3,4,5,6,7,8])
+
+            return move
+
+    def chooseRandomMoveFromList(self,board):
+        pc = [i for i, j in enumerate(board) if j == '-']
+        #     print(pc)
+        return pc
+
+    def hard(self, board):
+
+        pc = self.chooseRandomMoveFromList(self.board)
+        (w2, l2, d2) = self.MC_trail(self.board, pc,self.times, [0] * 9, [0] * 9, [0] * 9)
+        move = self.auto_selection(w2, l2, d2)
 
         while move not in pc:
-            move = self.Hard_Test.auto_selection(w2, l2, d2)
-
+            move = self.auto_selection(w2, l2, d2)
         # move = random.choice(pc)
         self.selection(board, move)
         #         board.pop(0)
@@ -233,6 +298,7 @@ class partb():
         win = st_list.count('w') / self.times
         draw = st_list.count('d') / self.times
         lose = st_list.count('l') / self.times
+        print(win,draw,lose,self.times)
         return win,draw,lose
 
 
