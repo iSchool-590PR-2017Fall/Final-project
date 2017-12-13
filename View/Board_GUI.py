@@ -340,7 +340,7 @@ class chalWindow(QMainWindow):
         self.lbl3.setText(_translate("chalWindow", "number of MCS"))
         self.lb1.setText(_translate("resWindow", "winning rate for 1st"))
         self.lb2.setText(_translate("resWindow", "winning rate for 2nd"))
-        self.lb3.setText(_translate("resWindow", "drawning rate"))
+        self.lb3.setText(_translate("resWindow", "drawing rate"))
         self.btnrun.setText(_translate("chalWindow", "Run"))
 
 
