@@ -1,13 +1,14 @@
 import random
 from Model.Med_MCplay import Med_Test
-from Model.Hard_MCplay import Hard_Test
 
 
 class partb():
-    def __init__(self, lvla='medium', lvlb='medium', times='100'):
+    def __init__(self, lvla, lvlb, times):
+        from View.Board_GUI import chalWindow
+        self.chalWindow = chalWindow()
         self.lvla = lvla
         self.lvlb = lvlb
-        self.times = int(times)
+        self.times = times
         """
         board
         """
@@ -98,11 +99,16 @@ class partb():
         pc = [i for i, j in enumerate(board) if j == '-']
 
         # pc = self.chooseRandomMoveFromList(self.board)
-        (w2, l2, d2) = Hard_Test.MC_trail(self, self.board, pc, 1000, [0] * 9, [0] * 9, [0] * 9)
-        move = Hard_Test.auto_selection(self, w2, l2, d2)
+        """
+        here is the bug
+        """
+        from Model.Hard_MCplay import Hard_Test
+        self.Hard_Test=Hard_Test()
+        (w2, l2, d2) = self.Hard_Test.MC_trail(self.board, pc, 1000, [0] * 9, [0] * 9, [0] * 9)
+        move =self.Hard_Test.auto_selection(w2, l2, d2)
 
         while move not in pc:
-            move = Hard_Test.auto_selection(self, w2, l2, d2)
+            move = self.Hard_Test.auto_selection(w2, l2, d2)
 
         # move = random.choice(pc)
         self.selection(board, move)
@@ -224,14 +230,9 @@ class partb():
 
         # print(st_list)
         #         print(st_list.count('w'),st_list.count('d'),st_list.count('l'))
-        print(st_list.count('w') / self.times, st_list.count('d') / self.times, st_list.count('l') / self.times)
-        return st_list
+        win = st_list.count('w') / self.times
+        draw = st_list.count('d') / self.times
+        lose = st_list.count('l') / self.times
+        return win,draw,lose
 
 
-def main():
-    a1 = partb()
-    # a1.single_game(a1.board)##
-    a1.MC_games()
-
-if __name__ == '__main__':
-    main()
