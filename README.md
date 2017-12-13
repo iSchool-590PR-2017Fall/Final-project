@@ -1,27 +1,60 @@
-Create a FORK of this repository to store your code, data, and documentation for the final project. Detailed instructions for this assignment are in the course Moodle site.  The reason I'm asking you to fork this empty repository instead of creating a stand-alone repository is that it will be much easier for me and all students in the course to find all of our projects for code review and for grading. You can even get code review from students in the other section of IS590PR this way.
+2017Fall 590PR Final Project 
+==========
 
-Even though your fork of this repository shall remain public, you'll still need to explicitly add any students on your team as Collaborators in the Settings. That way you can grant them write privileges.
+A brief introduction on our project about **M**onte **C**arlo **S**imulation. 
 
-DELETE the lines from TEMPLATE up.
+> ***We are still learning, but for sure will try our best.***
+> @ [*Yingjun Guan*](https://ischool.illinois.edu/people/phd-students/yingjun-guan)
+> @ [*Lan Li*](https://www.linkedin.com/in/lan-li-42682214a/)
 
-TEMPLATE for your report:
 
-# Title: 
+## Title: 
+  Monte Carlo Simulation for Tic-tac-toe Game
+  
+  ![Tic-tac-toe](https://lh3.googleusercontent.com/EgfiSB2bdf7kuRfNQbe8Jaj_bhfrlfeRt2nzphA6jcbCQdy5iEku2uZyK-5_VWtWUCxi=w300)
 
 ## Team Member(s):
-(Note: Don't put your email addresses here (which is public).  If a student wants their NAME hidden as well, due to optional FERPA regulations, they can be listed purely by their GitHub ID).
+  Yingjun Guan, Lan Li
 
-# Monte Carlo Simulation Scenario & Purpose:
+## Project
+### Background:
+[Tic-tac-toe](https://en.wikipedia.org/wiki/Tic-tac-toe) is a world famous game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.
 
-### Hypothesis before running the simulation:
+[Monte Carlo Simulation](https://en.wikipedia.org/wiki/Monte_Carlo_method) is a broad class of computational algorithms that rely on repeated random sampling to obtain numerical results. 
 
-### Simulation's variables of uncertainty
-List and describe your simulation's variables of uncertainty (where you're using pseudo-random number generation). 
-For each such variable, how did you decide the range and which probability distribution to use?  
-Do you think it's a good representation of reality?
+*Our project* focuses on applying the Monte Carlo Simulation into training the machine to how to play tic-tac-toe _wisely_.
 
-## Instructions on how to use the program:
+### Hypothesis:
++ [ ] **Absolute randomness** - For any specific situation, the machine will try any blank spot, with an absolute randomness. In our case, the decision is on the basis of the simulation, which is on and only on the basis of randomness.
++ [ ] **random variable series** - Each step will be a different situation which will call a MCS for the decision, and the whole game is based on the collabraton of all MCS.
++ [ ] **No human experiences involved** - The program contains the idea of Exhaustive Attack method and the spirit of traversal, on the other hand, no human experience of the game is needed.
++ [ ] **Decision making** - Each possible solution is given appropriate weight for evaluation, and make the final decision; the process of decision making which based on the traversal on the next level(s) is called back propagation.
 
-
-## Sources Used:
-
+### Purpose:
+ - We are ambitious enough to generate a human-computer interactive GUI medium for playing the game. 
+ - The player can choose to play on the offensive position or the defensive position.
+ - The program can use the MCS to make the (best) decision.
+ - The program can also help dig in some interesting research on tic-tac-toe, including but not limited to:
+ ~~~~
+ 1. What's the winning rate of the offensive position / defensive position?
+ 2. What is the probability of the first player winning in Tic Tac Toe as well as the second one winning?
+ 3. Is there a way to never lose at Tic-Tac-Toe?
+ etc.
+ ~~~~
+ 
+### Algorithm:
+ - The whole program applies the idea of recursion. The following figure can also helps to clarify the algorithm.
+ ![Algorithm](http://i.imgur.com/L6uAKBD.png)
+ 
+## Sources:
+ - Software: Python 3.6 (PythonCharm), 
+ - PyQT for UI design,
+ - Algorithm: [Monte Carlo Tree Search](http://www.cameronius.com/research/mcts/about/index.html)
+ 
+## References:
+ - _Tic tac toe_: https://en.wikipedia.org/wiki/Tic-tac-toe
+ - _Monte Carlo Method_: https://en.wikipedia.org/wiki/Monte_Carlo_method
+ - _Minimax algorithm_: https://neverstopbuilding-dropblog.herokuapp.com/minimax
+ - _Monte Carlo Tree Search_: http://www.cameronius.com/research/mcts/about/index.html
+ - _PYQT_: https://en.wikipedia.org/wiki/PyQt
+ - _interesting questions in Tic Tac Toe_: https://www.quora.com/topic/Tic-Tac-Toe
